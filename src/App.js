@@ -74,7 +74,7 @@ const Game = props => {
 
     function isWinState(){
       const hasVerticalWin = isVerticalWin()
-      const hasHorizontalWin = isHorizontalWin()
+      const hasHorizontalWin = isHorizontalWin(currentPlayer)
       const hasDiagonalWin = isDiagonalWin()
       return hasVerticalWin || hasHorizontalWin || hasDiagonalWin
     }
@@ -83,8 +83,11 @@ const Game = props => {
       return false
     }
 
-    function isHorizontalWin(){
-      return false
+    function isHorizontalWin(currentPlayer){
+      const row0 = grid[0].every(square => square === currentPlayer)
+      const row1 = grid[1].every(square => square === currentPlayer)
+      const row2 = grid[2].every(square => square === currentPlayer)
+      return row0 || row1 || row2
     }
 
     function isDiagonalWin(){
