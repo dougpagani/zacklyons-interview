@@ -6,14 +6,12 @@ export default function App() {
   return <Game/>
 }
 
-class Square extends React.Component {
-  render() {
-    return (
-      <button className="square">
-        {/* TODO */}
-      </button>
-    );
-  }
+const Square = props => {
+  return (
+    <button className="square">
+      {/* TODO */}
+    </button>
+  );
 }
 
 class Board extends React.Component {
