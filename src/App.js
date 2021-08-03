@@ -6,10 +6,10 @@ export default function App() {
   return <Game/>
 }
 
-const Square = props => {
+const Square = ({marking}) => {
   return (
     <button className="square">
-      {/* TODO */}
+      {marking}
     </button>
   );
 }
