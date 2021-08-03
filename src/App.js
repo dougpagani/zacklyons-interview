@@ -14,12 +14,12 @@ const Square = ({marking}) => {
   );
 }
 
-const Board = ({grid}) => {
+const Board = ({currentPlayer,grid}) => {
   const renderSquare = (row, column) => {
     return <Square marking={grid[row][column]}/>;
   }
 
-  const status = 'Next player: X';
+  const status = `Next player: ${currentPlayer}`;
 
   return (
     <div>
@@ -51,7 +51,7 @@ const Game = props => {
   return (
     <div className="game">
       <div className="game-board">
-        <Board grid={grid} />
+        <Board currentPlayer={currentPlayer} grid={grid} />
       </div>
       <div className="game-info">
         <div>{/* status */}</div>
