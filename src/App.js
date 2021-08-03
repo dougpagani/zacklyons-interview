@@ -73,6 +73,21 @@ const Game = props => {
     }
 
     function isWinState(){
+      const hasVerticalWin = isVerticalWin()
+      const hasHorizontalWin = isHorizontalWin()
+      const hasDiagonalWin = isDiagonalWin()
+      return hasVerticalWin || hasHorizontalWin || hasDiagonalWin
+    }
+
+    function isVerticalWin(){
+      return false
+    }
+
+    function isHorizontalWin(){
+      return false
+    }
+
+    function isDiagonalWin(){
       return false
     }
 
