@@ -43,8 +43,7 @@ const Board = props => {
   );
 }
 
-class Game extends React.Component {
-  render() {
+const Game = props => {
     return (
       <div className="game">
         <div className="game-board">
@@ -56,6 +55,5 @@ class Game extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
