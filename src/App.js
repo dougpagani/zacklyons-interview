@@ -19,11 +19,25 @@ const Board = ({currentPlayer,gameState,grid,markBoardSquare}) => {
     return <Square gameState={gameState} markBoardSquare={()=>{markBoardSquare(row,column)}} marking={grid[row][column]}/>;
   }
 
-  const status = `Next player: ${currentPlayer}`;
+  const getStatus = gameState => {
+    let status
+    switch(gameState){
+      case 'currentlyPlaying':
+        status = `Next player: ${currentPlayer}`
+        break;
+      case 'tie':
+        status = `GAME OVER! ITS A TIE!!!`
+        break;
+      default:
+        status = `GAME OVER! ${currentPlayer} WINS!!!`
+        break;
+    }
+    return status
+  }
 
   return (
     <div>
-      <div className="status">{status}</div>
+      <div className="status">{getStatus(gameState)}</div>
       <div className="board-row">
         {renderSquare(0,0)}
         {renderSquare(0,1)}
