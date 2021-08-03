@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React,{useState} from 'react';
 
 export default function App() {
   return <Game/>
@@ -44,6 +44,10 @@ const Board = props => {
 }
 
 const Game = props => {
+  const [grid,setGrid] = useState([['','',''],['','',''],['','','']])
+  const [currentPlayer,setCurrentPlayer] = useState('p1') // ['p1','p2']
+  const [gameState,setGameState] = useState('currentlyPlaying') // ['currentlyPlaying','tie','winner p1',winner p2]
+
   return (
     <div className="game">
       <div className="game-board">
