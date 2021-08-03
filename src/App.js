@@ -45,7 +45,7 @@ const Board = ({grid}) => {
 
 const Game = props => {
   const [grid,setGrid] = useState([['','',''],['','',''],['','','']])
-  const [currentPlayer,setCurrentPlayer] = useState('p1') // ['p1','p2']
+  const [currentPlayer,setCurrentPlayer] = useState('x') // ['x','o']
   const [gameState,setGameState] = useState('currentlyPlaying') // ['currentlyPlaying','tie','winner p1',winner p2]
 
   return (
