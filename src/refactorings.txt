@@ -14,3 +14,9 @@
 
 * Instead of passing gameState to Square, create a prop for Square called 'disabled'
   and give prop the gameState expression
+
+Doug added:
+- state collocation -- grid
+- more tightly scoped reducers/state-setters 
+    - e.g. setWin() vs. setDraw()
+- enum of winner -- eliminating the magic string
