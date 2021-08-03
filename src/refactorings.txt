@@ -1,0 +1,16 @@
+* Replacing the two dimensional array with a simpler one dimensional array
+
+* Refactor gameState enum from
+  ['currentlyPlaying','tie','winnerX','winnerO'] > ['currentlyPlaying','tie','winner']
+  * use currentPlayer to determine who moved last/won
+
+* Lift Status + helper out of 'Board', more fit to live in 'Game'
+
+* Board-Row jsx could be abstracted into a helper to reduce repeated code
+
+* Could probably spend some time contemplating a more graceful solution to win state calculations,
+  using chained expressions like we currently do feels ham-fisted.
+  It would feel better to iterate through the state
+
+* Instead of passing gameState to Square, create a prop for Square called 'disabled'
+  and give prop the gameState expression
