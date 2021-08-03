@@ -77,7 +77,10 @@ const Game = props => {
     }
 
     function hasSpacesLeft(){
-      return true
+      let row1 = grid[0].some(square => square === '')
+      let row2 = grid[1].some(square => square === '' )
+      let row3 = grid[2].some(square => square === '' )
+      return row1 || row2 || row3
     }
   }
 
