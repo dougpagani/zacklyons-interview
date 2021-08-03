@@ -6,17 +6,17 @@ export default function App() {
   return <Game/>
 }
 
-const Square = ({markBoardSquare,marking}) => {
+const Square = ({gameState,markBoardSquare,marking}) => {
   return (
-    <button className="square" onClick={markBoardSquare}>
+    <button className="square" disabled={gameState !== 'currentlyPlaying'} onClick={markBoardSquare}>
       {marking}
     </button>
   );
 }
 
-const Board = ({currentPlayer,grid,markBoardSquare}) => {
+const Board = ({currentPlayer,gameState,grid,markBoardSquare}) => {
   const renderSquare = (row, column) => {
-    return <Square markBoardSquare={()=>{markBoardSquare(row,column)}} marking={grid[row][column]}/>;
+    return <Square gameState={gameState} markBoardSquare={()=>{markBoardSquare(row,column)}} marking={grid[row][column]}/>;
   }
 
   const status = `Next player: ${currentPlayer}`;
@@ -46,7 +46,7 @@ const Board = ({currentPlayer,grid,markBoardSquare}) => {
 const Game = props => {
   const [grid,setGrid] = useState([['','',''],['','',''],['','','']])
   const [currentPlayer,setCurrentPlayer] = useState('x') // ['x','o']
-  const [gameState,setGameState] = useState('currentlyPlaying') // ['currentlyPlaying','tie','winner p1',winner p2]
+  const [gameState,setGameState] = useState('currentlyPlaying') // ['currentlyPlaying','tie','winnerX','winnerO']
 
   const markBoardSquare = (row,column) => {
     let gridCopy = grid.slice()
@@ -84,7 +84,7 @@ const Game = props => {
   return (
     <div className="game">
       <div className="game-board">
-        <Board currentPlayer={currentPlayer} grid={grid} markBoardSquare={markBoardSquare}/>
+        <Board currentPlayer={currentPlayer} gameState={gameState} grid={grid} markBoardSquare={markBoardSquare}/>
       </div>
       <div className="game-info">
         <div>{/* status */}</div>
