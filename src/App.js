@@ -6,17 +6,17 @@ export default function App() {
   return <Game/>
 }
 
-const Square = ({marking}) => {
+const Square = ({markBoardSquare,marking}) => {
   return (
-    <button className="square">
+    <button className="square" onClick={markBoardSquare}>
       {marking}
     </button>
   );
 }
 
-const Board = ({currentPlayer,grid}) => {
+const Board = ({currentPlayer,grid,markBoardSquare}) => {
   const renderSquare = (row, column) => {
-    return <Square marking={grid[row][column]}/>;
+    return <Square markBoardSquare={()=>{markBoardSquare(row,column)}} marking={grid[row][column]}/>;
   }
 
   const status = `Next player: ${currentPlayer}`;
@@ -48,10 +48,17 @@ const Game = props => {
   const [currentPlayer,setCurrentPlayer] = useState('x') // ['x','o']
   const [gameState,setGameState] = useState('currentlyPlaying') // ['currentlyPlaying','tie','winner p1',winner p2]
 
+  const markBoardSquare = (row,column) => {
+    let gridCopy = grid.slice()
+    gridCopy[row][column] = currentPlayer
+    setGrid(gridCopy)
+    setCurrentPlayer(currentPlayer === 'x' ? 'o' : 'x')
+  }
+
   return (
     <div className="game">
       <div className="game-board">
-        <Board currentPlayer={currentPlayer} grid={grid} />
+        <Board currentPlayer={currentPlayer} grid={grid} markBoardSquare={markBoardSquare}/>
       </div>
       <div className="game-info">
         <div>{/* status */}</div>
