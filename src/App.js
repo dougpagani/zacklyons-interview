@@ -58,18 +58,24 @@ const Game = props => {
       gridCopy[row][column] = currentPlayer
     }
     setGrid(gridCopy)
-    updateGameState()
-    setCurrentPlayer(currentPlayer === 'x' ? 'o' : 'x')
+    let gameOver = updateGameState()
+    if(!gameOver){
+      setCurrentPlayer(currentPlayer === 'x' ? 'o' : 'x')
+    }
   }
 
+  // returns bool for game ending
   const updateGameState = () => {
     if(isWinState()){
       setGameState(`winner${currentPlayer}`)
-      window.alert(`GAME OVER! ${currentPlayer} WINS!!!`)
+      return true
     }
     if(!hasSpacesLeft()){
       setGameState(`tie`)
-      window.alert(`GAME OVER! ITS A TIE!!!`)
+      return true
+    }
+    else{
+      return false
     }
 
     function isWinState(){
