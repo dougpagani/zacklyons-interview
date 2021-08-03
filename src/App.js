@@ -50,7 +50,13 @@ const Game = props => {
 
   const markBoardSquare = (row,column) => {
     let gridCopy = grid.slice()
-    gridCopy[row][column] = currentPlayer
+    if(gridCopy[row][column]){
+      window.alert('YO! THATS CHEATING')
+      return
+    }
+    else{
+      gridCopy[row][column] = currentPlayer
+    }
     setGrid(gridCopy)
     setCurrentPlayer(currentPlayer === 'x' ? 'o' : 'x')
   }
